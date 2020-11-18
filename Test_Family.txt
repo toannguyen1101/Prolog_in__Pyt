@@ -1,0 +1,59 @@
+1. Ai là cháu trai của Prince Harry?
+nephew(X,'Prince Harry').
+
+2. Zara Phillips có phải là chị/em gái với Peter Phillips không?
+sister('Zara Phillips','Peter Phillips').
+
+3. Ai là ông bà của Savannah Phillips?
+grandparent(X, 'Savannah Phillips').
+
+4. Zara Phillips có phải là mẹ của Mia Grace Tindal?
+mother('Zara Phillips', 'Mia Grace Tindal').
+
+5. Ai là anh/em trai với Prince Edward
+brother(X,'Prince Edward').
+
+6. Isla Phillips có phải là cháu gái của Princess Anne không?
+granddaughterr('Isla Phillips','Princess Anne').
+
+7. Ai là con gái của Prince Edward?
+daughter(X, 'Prince Edward').
+
+8. Ai là bố của James Viscount Severn?
+father(X, 'James Viscount Severn').
+
+9. Ai là bà nội của Savannah Phillips?
+grandmother(X, 'Savannah Phillips').
+
+10. Ai là cháu gái của Princess Anne?
+niece(X,'Princess Anne').
+
+11. Prince George có phải cháu của Prince Charles không?
+grandchild('Prince George','Prince Charles').
+
+12. Prince George có phải là cháu trai của Prince Charles không?
+grandson('Prince George','Prince Charles').
+
+13. Zara Phillips có phải con của Captain Mark Phillips?
+son('Zara Phillips', 'Captain Mark Phillips').
+
+14. Prince William có phải là anh em ruột với Kate Middleton không?
+sibling('Prince William','Kate Middleton')
+
+15. Ai là con của Autumn Kelly?
+child(X, 'Autumn Kelly').
+
+16. Princess Diana có phải là vợ của Prince Charles không?
+wife('Princess Anne', 'Captain Mark Phillips').
+
+17. Zara Phillips có phải là cô của Isla Phillips không?
+aunt('Zara Phillips','Isla Phillips').
+
+18. Ai là uncle của Prince William?
+uncle(X,'Prince William').
+
+19. Timothy Laurence có phải là ông nội của Mia Grace Tindall?
+grandfather('Timothy Laurence', 'Mia Grace Tindall').
+
+20. Ai là chồng của Sophie Rhys-jones?
+husband(X, 'Sophie Rhys Jones').
