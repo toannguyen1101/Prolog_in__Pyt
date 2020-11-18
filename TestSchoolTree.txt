@@ -1,0 +1,59 @@
+1.Những học sinh của Class A
+studentinclass(X,a).
+
+2.Ai là Boss của Carter?
+boss(X,carter).
+
+3.Ai là Ban giám hiệu?
+schoolleader(X).
+
+4.Những giáo viên dạy lớp b
+teachclass(X,b).
+
+5.Messi và Ronaldo học ở lớp nào ?
+classmate(ronaldo,messi,X).
+
+6.Trump có phải là học sinh lớp C hay không ?
+classhavestudent(c,trump).
+
+7.Các giáo viên của bộ môn Toán 
+mathteacher(X).
+
+8.Trưởng bộ môn văn có phải giới tính là Nam hay không ?
+male(literaturehead(X)).
+
+9. Những nhân viên cấp dưới của William
+boss(william,Y).
+
+10.Eleanor có dạy lớp C hay không?
+teachin(eleanor,c).
+
+11.Những lớp mà giáo viên Madison dạy
+teachclass(madison,X).
+
+12.Những học sinh cùng trường với Messi
+schoolmate(messi,X).
+
+13.Tất cả các trưởng bộ môn
+divisionhead(X).
+
+14.Ella có phải là trưởng bộ môn hay không?
+divisionhead(ella).
+
+15.Biden có phải là học sinh của lớp A hay không?
+classhavestudent(a,biden).
+
+16.Messi và Ronaldo có phải học chung lớp A hay không
+classmate(ronaldo,messi,a).
+
+17.Bạn chung lớp của B của Lincoln
+classmate(lincoln,X,c).
+
+18.Jack có dạy lớp C hay không ?
+classteacher(c,jack).
+
+19.Harper có phải là một giáo viên hay không ?
+teacher(harper).
+
+20.Trưởng bộ môn văn có phải là giới tính Nữ hay không ?
+female(literaturehead(X)).
