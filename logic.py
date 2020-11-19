@@ -27,12 +27,7 @@ def take_input():
     return question
 
 
-def main():
-    fact=[]
-    rule=[]
-    fileName='test.txt'
-    take_rules_laws(rule,fact,fileName)
-    question=take_input()
+
     
 def _arg(ques):
     first_bracket=ques.find('(')
@@ -108,15 +103,17 @@ def _var_fact(question,fact):
     return var_dict
 
 def fill_rule(rule,ques_arg):
-    not_var_pos=[]
+
     rule_header=rule[:rule.find(':')]
     rule_header_arg=_arg(rule_header)
-    for i in range(0,len(ques_arg)):
-        if(is_var(ques_arg[i])==False):
-            not_var_pos.append(i)
+
     if(len(rule_header_arg)==len(ques_arg)):
-        for i in not_var_pos:
+        for i in range(0,len(ques_arg)):
+            if(ques_arg[i] in rule and is_var(ques_arg[i])):
+                rule=rule.replace(ques_arg[i],ques_arg[i]+ques_arg[i])
+            
             rule=rule.replace(rule_header_arg[i],ques_arg[i])
+            
     return rule
 def fill_var(predicats,idx):
     var_dict=_var_fact(predicats[idx], fact) 
@@ -137,20 +134,22 @@ def fill_var(predicats,idx):
                                     predicats[i]=predicats[i].replace(pre_arg[j],k)
                                     predicats[idx]=predicats[idx].replace(pre_arg[j],k)
                                     break
-        for i in range(0,len(predicats)):
-           var_dict=_var_fact(predicats[i], fact) 
-           if(len(var_dict)>0):
-              for j in var_dict:
-                  for k in var_dict[j]:
-                      predicats[i]=predicats[i].replace(j,k)
+        #for i in range(0,len(predicats)):
+           #var_dict=_var_fact(predicats[i], fact) 
+           #if(len(var_dict)>0):
+              #for j in var_dict:
+                  #for k in var_dict[j]:
+                      #predicats[i]=predicats[i].replace(j,k)
       
              
 def processrule(line,fact,rule):
      result=[]
      rule_pos=is_rule(_functor(line),rule)
      if(rule_pos!=-1):
-         rule[rule_pos]=rule[rule_pos].replace('),',')*')
-         new_rule=fill_rule(rule[rule_pos],_arg(line))
+         temp=rule[rule_pos]
+         temp=temp.replace('),',')*')
+         
+         new_rule=fill_rule(temp,_arg(line))
          predicats=parsed_rule(new_rule) 
          for i in range(0,len(predicats)):
              if(is_fact(_functor(predicats[i]),fact)==False):
@@ -176,25 +175,39 @@ def answer_question(rule,fact,question):
         if(answer_fact(fact,result[i])==False):
             return False
     return True
-fact=[]
-rule=[]
-fileName='test.txt'
 
-take_rules_laws(rule,fact,fileName)
+
+def main():
+    fact=[]
+    rule=[]
+    fileName='test.txt'
+    take_rules_laws(rule,fact,fileName)
+    question=take_input()
+    print(str(answer_question(rule,fact,question)))
+    
+    
+main()
+#fact=[]
+#rule=[]
+#fileName='test.txt'
+
+#take_rules_laws(rule,fact,fileName)
 #question=take_input()
-question="nephew('Prince George','Prince Harry')."
+#question="nephew('Prince George','Prince Harry')."
 #question="sibling(Parent,'Prince Harry')."
 #new_rule=fill_rule(rule_t, question)
-
-temp=["parent(Parent,Per1)", "parent(Parent,'Prince Harry')"]
+#test=_arg(question)
+#temp="grandchild(GC,GP):-parent(GP,Parent),child(GC,Parent)."
+#print(fill_rule(temp,test))
 #print(temp)
 #fill_var(temp,0)
 #fill_var(temp,0)
-print(processrule(question,fact,rule))
+#print(processrule(question,fact,rule))
 #print(temp)
 #print(temp)
 #test=_var_fact('parent(Parent,prince_harry)',fact)
-print(str(answer_question(rule,fact,question)))
+#print(str(answer_question(rule,fact,question)))
+#print(rule)
 #answer_question(rule,fact,question)
 
 
