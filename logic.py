@@ -1,4 +1,5 @@
 
+
 def is_type(line):
     if('.' in line):
         if('-' in line):
@@ -106,15 +107,19 @@ def fill_rule(rule,ques_arg):
 
     rule_header=rule[:rule.find(':')]
     rule_header_arg=_arg(rule_header)
-
+    
     if(len(rule_header_arg)==len(ques_arg)):
         for i in range(0,len(ques_arg)):
-            if(ques_arg[i] in rule and is_var(ques_arg[i])):
-                rule=rule.replace(ques_arg[i],ques_arg[i]+ques_arg[i])
-            
+            if(is_var(ques_arg[i])):
+               if(ques_arg[i] not in rule_header_arg):
+                   if(ques_arg[i] in rule):
+                       rule=rule.replace(ques_arg[i],ques_arg[i]+ques_arg[i])
+                     
+        
             rule=rule.replace(rule_header_arg[i],ques_arg[i])
-            
+   
     return rule
+
 def fill_var(predicats,idx):
     var_dict=_var_fact(predicats[idx], fact) 
     var_pos=[]
@@ -123,25 +128,19 @@ def fill_var(predicats,idx):
         for i in range(0,len(pre_arg)):
             if(is_var(pre_arg[i])==True):
                 var_pos.append(i) 
-        for i in range(1,len(predicats)): 
+        for i in range(0,len(predicats)): 
             if(i!=idx):
-                for j in var_pos:  
-                    if(pre_arg[j] in predicats[i]):
-                        temp_dict=_var_fact(predicats[i], fact)
+                for j in var_pos: 
+                    temp_dict=_var_fact(predicats[i], fact)
+                    if(pre_arg[j] in temp_dict):          
                         if(len(temp_dict)>0):
                             for k in temp_dict[pre_arg[j]]:
                                 if(k in var_dict[pre_arg[j]]):
                                     predicats[i]=predicats[i].replace(pre_arg[j],k)
                                     predicats[idx]=predicats[idx].replace(pre_arg[j],k)
                                     break
-        #for i in range(0,len(predicats)):
-           #var_dict=_var_fact(predicats[i], fact) 
-           #if(len(var_dict)>0):
-              #for j in var_dict:
-                  #for k in var_dict[j]:
-                      #predicats[i]=predicats[i].replace(j,k)
-      
-             
+                        
+            
 def processrule(line,fact,rule):
      result=[]
      rule_pos=is_rule(_functor(line),rule)
@@ -163,6 +162,8 @@ def processrule(line,fact,rule):
              #result.append(predicats[i])
      for i in range(0,len(result)):
          fill_var(result,i)
+     for i in range(0,len(result)):
+         fill_var(result,i)
      return result
      
 def answer_question(rule,fact,question):
@@ -170,10 +171,14 @@ def answer_question(rule,fact,question):
            return answer_fact(fact,question)
     else:
         result=processrule(question,fact,rule)
-        
+    print(result)
     for i in range(0,len(result)):
         if(answer_fact(fact,result[i])==False):
             return False
+    for i in range(0,len(result)):
+        if(answer_fact(fact,result[i])==False):
+            return False   
+    
     return True
 
 
@@ -184,6 +189,26 @@ def main():
     take_rules_laws(rule,fact,fileName)
     question=take_input()
     print(str(answer_question(rule,fact,question)))
+    
+def find_var_facts(result,fact):
+    var_facts=_var_fact(result[2],fact)
+    result={}
+    if(len(result)>1):
+        for i in var_facts:
+            for j in var_facts[i]:
+                check=0
+                for k in range(1,len(result)):
+                    temp=_var_fact(result[k],fact)
+                    if(j not in temp):
+                        check=1
+                        break
+                if(check==0):
+                    if(i not in result):
+                        result[i]=j
+                    else:
+                        result[i].append(j)
+    
+    return result
     
     
 main()
