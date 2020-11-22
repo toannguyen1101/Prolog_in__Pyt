@@ -14,7 +14,7 @@ mother('Zara Phillips', 'Mia Grace Tindal').
 brother(X,'Prince Edward').
 
 6. Isla Phillips có phải là cháu gái của Princess Anne không?
-granddaughterr('Isla Phillips','Princess Anne').
+granddaughter('Isla Phillips','Princess Anne').
 
 7. Ai là con gái của Prince Edward?
 daughter(X, 'Prince Edward').
