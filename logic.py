@@ -24,6 +24,12 @@ def take_rules_laws(rule,fact,fileName):
         elif(is_type(line)==2):
             rule.append(line[:-1])
     file_input.close()
+    
+    #Kiem tra luat cuoi, cuoi cau co dau cham hay khong
+    last_rule=rule[len(rule)-1]
+    if(last_rule[len(last_rule)-1]!="."):
+        rule[len(rule)-1]=rule[len(rule)-1]+"."
+    
     deleted=[]
     #Tach cac truong hop hoac
     #Vi du: A:-B;C. Tach thanh 2 luat khac nhau A:-B va A:-C
