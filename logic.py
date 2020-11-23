@@ -34,17 +34,21 @@ def take_rules_laws(rule,fact,fileName):
     #Tach cac truong hop hoac
     #Vi du: A:-B;C. Tach thanh 2 luat khac nhau A:-B va A:-C
     #Sinh ra luat trung ten, xoa luat cu
+    temp=[]
     for i in range(0,len(rule)):
         if(";"in rule[i]):
+            deleted.append(i)
             rule_header=rule[i][:rule[i].find(":-")]
             rule_functors=rule[i][rule[i].find(":-")+2:len(rule[i])-1]
             functors=rule_functors.split(";")
             for j in functors:
                 new_rule=rule_header+":-"+j+"."
-                rule.append(new_rule)
-            deleted.append(i)
-    for i in deleted:
-        rule.pop(i)
+                temp.append(new_rule)
+        else:
+            temp.append(rule[i])
+            
+    rule.clear()
+    rule.extend(temp)
     
 #Nhap cau hoi
 def take_input():
@@ -199,7 +203,6 @@ def processrule(line,fact,rule,rule_pos):
          #Xu li cac ham tu con
          for i in range(0,len(predicats)):
              #Xu li luat
-             
              #Tap vi tri cac luat co cung ten
              pos=is_rule(_functor(predicats[i]),rule)
             
@@ -232,7 +235,7 @@ def processrule(line,fact,rule,rule_pos):
                  #Xoa key cu trong tap ket qua     
                  for j in list_name:
                      result.pop(j)
-                 
+                  
              elif(is_fact(_functor(predicats[i]),fact)!=-1):
                  #Xu li su kien
                  if(len(result)>0):
@@ -243,7 +246,6 @@ def processrule(line,fact,rule,rule_pos):
                          result[str(rule_pos)]=[predicats[i]]
                      else:
                          result[str(rule_pos)].append(predicats[i])
-        
         
      #Bo sung cac gia tri cho cac bien con thieu
      for i in result:
@@ -322,5 +324,3 @@ def print_var_result(question,rule,fact,x,idx):
         print(x," = NONE",)
     
 
-    
-  
