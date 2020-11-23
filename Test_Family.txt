@@ -7,8 +7,8 @@ sister('Zara Phillips','Peter Phillips').
 3. Ai là ông bà của Savannah Phillips?
 grandparent(X, 'Savannah Phillips').
 
-4. Zara Phillips có phải là mẹ của Mia Grace Tindal?
-mother('Zara Phillips', 'Mia Grace Tindal').
+4. Zara Phillips có phải là mẹ của Mia Grace Tindall?
+mother('Zara Phillips', 'Mia Grace Tindall').
 
 5. Ai là anh/em trai với Prince Edward
 brother(X,'Prince Edward').
