@@ -19,8 +19,8 @@ classhavestudent(c,trump).
 7.Các giáo viên của bộ môn Toán 
 mathteacher(X).
 
-8.Trưởng bộ môn văn có phải giới tính là Nam hay không ?
-male(literaturehead(X)).
+8.Tất cả các giáo viên
+teacher(X).
 
 9. Những nhân viên cấp dưới của William
 boss(william,Y).
@@ -47,7 +47,7 @@ classhavestudent(a,biden).
 classmate(ronaldo,messi,a).
 
 17.Bạn chung lớp của B của Lincoln
-classmate(lincoln,X,c).
+classmate(lincoln,X,b).
 
 18.Jack có dạy lớp C hay không ?
 classteacher(c,jack).
@@ -55,5 +55,5 @@ classteacher(c,jack).
 19.Harper có phải là một giáo viên hay không ?
 teacher(harper).
 
-20.Trưởng bộ môn văn có phải là giới tính Nữ hay không ?
-female(literaturehead(X)).
+20.Jack có dạy lớp B hay không?
+teachin(jack,b).

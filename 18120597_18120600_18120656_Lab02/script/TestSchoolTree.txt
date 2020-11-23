@@ -47,7 +47,7 @@ classhavestudent(a,biden).
 classmate(ronaldo,messi,a).
 
 17.Bạn chung lớp của B của Lincoln
-classmate(lincoln,X,c).
+classmate(lincoln,X,b).
 
 18.Jack có dạy lớp C hay không ?
 classteacher(c,jack).
